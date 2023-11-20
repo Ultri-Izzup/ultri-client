@@ -1,0 +1,35 @@
+// app global css in SCSS form
+.body--light .toolbar {
+  background-color: $primary !important;
+}
+
+.body--dark .toolbar {
+  background-color: $grey-9 !important;
+}
+
+.toolbar-text-link {
+  color: white;
+  text-decoration: none;
+}
+
+.body--light .md-editor {
+  background-color: #{$grey-1} !important;
+}
+
+.body--dark .md-editor {
+  --md-color: white !important;
+  --md-bk-color: #1D1D1D !important;
+}
+
+.body--light .lesser-text {
+  color: $grey-9 !important;
+}
+
+.body--dark .lesser-text {
+  color: $grey-4 !important;
+}
+
+
+
+
+
