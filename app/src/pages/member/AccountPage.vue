@@ -245,7 +245,7 @@
                             v-model="passwordRepeat"
                             :type="showPassword ? 'text' : 'password'"
                             autocomplete="new-password"
-                            :disable="passwordStrength < 90"
+                            :disable="passwordStrength < targetScore"
                           >
                             <template v-slot:append>
                               <q-icon
@@ -297,7 +297,7 @@
                             <div
                               :class="
                                 'col-2 text-center ' +
-                                (passwordStrength >= 90
+                                (passwordStrength >= targetScore
                                   ? '  pwd-lvl-5 '
                                   : ' pwd-lvl-unmet')
                               "
@@ -315,7 +315,7 @@
                             color="primary"
                             class="q-my-sm"
                             :disable="
-                              passwordStrength < 90 ||
+                              passwordStrength < targetScore ||
                               password != passwordRepeat ||
                               formSubmitting
                             "
@@ -357,7 +357,7 @@
                         v-model="passwordRepeat"
                         :type="showPassword ? 'text' : 'password'"
                         autocomplete="new-password"
-                        :disable="passwordStrength < 90"
+                        :disable="passwordStrength < targetScore"
                       >
                         <template v-slot:append>
                           <q-icon
@@ -409,7 +409,7 @@
                         <div
                           :class="
                             'col-2 text-center ' +
-                            (passwordStrength >= 90
+                            (passwordStrength >= targetScore
                               ? '  pwd-lvl-5 '
                               : ' pwd-lvl-unmet')
                           "
@@ -427,7 +427,7 @@
                           class="q-px-large"
                           color="primary"
                           :disable="
-                            passwordStrength < 90 ||
+                            passwordStrength < targetScore ||
                             password != passwordRepeat ||
                             formSubmitting
                           "
@@ -794,6 +794,9 @@ useScriptTag("/js/zxcvbn.js");
 
 const route = useRoute();
 
+const targetScore = 85;
+const imposedLimit = targetScore - 1;
+
 const domain = computed(() => {
   return route.params.realm.replace("_", ".");
 });
@@ -903,16 +906,16 @@ watch(password, (newValue) => {
 
     let entropy = Math.log2(guesses);
 
-    if (entropy > 90) {
+    if (entropy > targetScore) {
       const uniqSize = new Set(strArray).size;
       if (uniqSize < 4) {
         error.value = "Use more unique characters";
-        entropy = 89;
+        entropy = imposedLimit;
       } else {
         const scoring = zxcvbn(newValue);
         if (scoring.score < 4) {
           error.value = "User more unique characters";
-          entropy = 89;
+          entropy = imposedLimit;
         }
       }
     }
