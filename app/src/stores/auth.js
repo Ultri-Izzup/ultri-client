@@ -41,77 +41,121 @@ const domainMap = new Map([
     "cycleopedia.org",
     {
       domDisplay: "CycleOpedia.org",
-      display: "CycleOpedia"
+      display: "CycleOpedia",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "opensociocracy.org",
     {
       domDisplay: "OpenSociocracy.org",
-      display: "OpenSociocracy"
+      display: "OpenSociocracy",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "usevue.org",
     {
       domDisplay: "useVue.org",
-      display: "useVue"
+      display: "useVue",
+      fediverseHost: "i",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "bikemechanic.info",
     {
       domDisplay: "BikeMechanic.info",
-      display: "Bike Mechanic"
+      display: "Bike Mechanic",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "brewmasters.us",
     {
       domDisplay: "Brewmasters.us",
-      display: "Brewmasters"
+      display: "Brewmasters",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "sportsword.com",
     {
       domDisplay: "SportsWord.com",
-      display: "Sports Word"
+      display: "Sports Word",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "expertgaming.com",
     {
       domDisplay: "ExpertGaming.com",
-      display: "Expert Gaming"
+      display: "Expert Gaming",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "maxpets.com",
     {
       domDisplay: "MaxPets.com",
-      display: "Max Pets"
+      display: "Max Pets",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "homebrewingbeer.com",
     {
       domDisplay: "HomebrewingBeer.com",
-      display: "Homebrewing Beer"
+      display: "Homebrewing Beer",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "collectorsword.com",
     {
       domDisplay: "CollectorsWord.com",
-      display: "Collectors Word"
+      display: "Collectors Word",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ],
   [
     "maxrecipes.com",
     {
       domDisplay: "MaxRecipes.com",
-      display: "Max Recipes"
+      display: "Max Recipes",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp",
     }
   ]
 ]);
