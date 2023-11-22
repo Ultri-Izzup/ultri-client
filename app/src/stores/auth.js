@@ -11,18 +11,23 @@ import {
 import { api } from "boot/axios";
 
 const domains = [
-  "Izzup.com",
-  "CycleOpedia.org",
-  "OpenSociocracy.org",
-  "useVue.org",
-  "BikeMechanic.info",
-  "Brewmasters.us",
-  "SportsWord.com",
-  "ExpertGaming.com",
-  "MaxPets.com",
-  "HomebrewingBeer.com",
-  "CollectorsWord.com",
-  "MaxRecipes.com"
+  "it.Izzup.com 8080",
+  "my.BikeMechanic.info 8090",
+  "my.Brewmasters.us 8091",
+  "my.CollectorsWord.com 8092",
+  "my.CycleOpedia.org 8093",
+  "my.DataEncyclopedia.com 8094",
+  "my.eTownMall.com 8095",
+  "my.ExpertGaming.com 8096",
+  "my.EZVegetarian.com 8097",
+  "help.FinanceAProperty.com 8098",
+  "my.HomebrewingBeer.com 8099",
+  "my.HomebrewRecipe.com 8084",
+  "my.MaxPets.com 8085",
+  "my.MaxRecipes.com 8086",
+  "my.OpenSociocracy.org 8087",
+  "my.SportsWord.com 8088",
+  "i.useVue.org 8089"
 ];
 
 const domainMap = new Map([
@@ -31,10 +36,10 @@ const domainMap = new Map([
     {
       domDisplay: "Izzup.com",
       display: "Izzup",
-      fediverseHost: "members",
+      fediverseHost: "it",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -45,7 +50,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -56,7 +61,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -67,7 +72,7 @@ const domainMap = new Map([
       fediverseHost: "i",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -78,7 +83,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -89,7 +94,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -100,7 +105,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -111,7 +116,18 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
+    }
+  ],
+  [
+    "etownmall.com",
+    {
+      domDisplay: "eTownMall.com",
+      display: "eTown Mall",
+      fediverseHost: "for-sale",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -122,7 +138,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -133,7 +149,18 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
+    }
+  ],
+  [
+    "homebrewrecipe.com",
+    {
+      domDisplay: "HomebrewRecipe.com",
+      display: "Homebrew Recipe",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -144,7 +171,7 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
     }
   ],
   [
@@ -155,7 +182,40 @@ const domainMap = new Map([
       fediverseHost: "my",
       matrixHost: "matrix",
       sipHost: "sip",
-      xmppHost: "xmpp",
+      xmppHost: "xmpp"
+    }
+  ],
+  [
+    "ezvegetarian.com",
+    {
+      domDisplay: "EZVegetarian.com",
+      display: "EZ Vegetarian",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp"
+    }
+  ],
+  [
+    "financeaproperty.com",
+    {
+      domDisplay: "FinanceAProperty.com",
+      display: "Finance a Property",
+      fediverseHost: "help",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp"
+    }
+  ],
+  [
+    "dataencyclopedia.com",
+    {
+      domDisplay: "DataEncyclopedia.com",
+      display: "Data Encyclopedia",
+      fediverseHost: "my",
+      matrixHost: "matrix",
+      sipHost: "sip",
+      xmppHost: "xmpp"
     }
   ]
 ]);
@@ -173,7 +233,7 @@ export const useAuthStore = defineStore("auth", {
     isNewMember: useStorage("isNewmember", false),
     accounts: useStorage("memberAccounts", new Map()),
     accountServices: useStorage("memberAccountServices", new Map()),
-    welcomeAccount: useStorage("welcomeAccount", null),
+    welcomeAccount: useStorage("welcomeAccount", null)
   }),
   getters: {
     isSignedIn(state) {
@@ -211,12 +271,12 @@ export const useAuthStore = defineStore("auth", {
       const available = [];
 
       domainMap.forEach((data, domain, map) => {
-        if(!this.accounts.has(domain)) {
-          available.push({ label: data.domDisplay, value: domain })
+        if (!this.accounts.has(domain)) {
+          available.push({ label: data.domDisplay, value: domain });
         }
-      })
+      });
       return available;
-    },
+    }
   },
   actions: {
     $reset() {
@@ -336,7 +396,7 @@ export const useAuthStore = defineStore("auth", {
       this.createdAt = createdAt;
     },
     setMemberAccounts(accounts) {
-      console.log('ACCOUNT', accounts)
+      console.log("ACCOUNT", accounts);
       // accounts.forEach(account => {
       //   console.log('AUTH ACCOUNT', account)
       //   this.accounts.set(account.domain, account);
@@ -344,31 +404,29 @@ export const useAuthStore = defineStore("auth", {
     },
     async getMemberAccounts() {
       const result = await api.get("/member");
-      console.log('ACCOUNTS', result);
-      if(result.data.accounts && result.data.accounts.length > 0) {
-        result.data.accounts.forEach(account => {
-          console.log('ACCOUNT', account);
-          this.accounts.set(account.domain, account)
-        })
+      console.log("ACCOUNTS", result);
+      if (result.data.accounts && result.data.accounts.length > 0) {
+        result.data.accounts.forEach((account) => {
+          console.log("ACCOUNT", account);
+          this.accounts.set(account.domain, account);
+        });
       }
     },
     async getMemberAccountServices(realm) {
-
       const result = await api.get("/member/account/" + realm);
-      console.log('ACCOUNT SERVICES', result);
-      if(result.data.services && result.data.services.length > 0) {
-
+      console.log("ACCOUNT SERVICES", result);
+      if (result.data.services && result.data.services.length > 0) {
         const domain = realm.replace("_", ".");
 
         const serviceObj = {};
 
-        result.data.services.forEach(service => {
+        result.data.services.forEach((service) => {
           serviceObj[service.service] = {
             status: service.status
-          }
-        })
+          };
+        });
 
-        console.log('SERV  OBJ', serviceObj)
+        console.log("SERV  OBJ", serviceObj);
 
         this.accountServices.set(domain, serviceObj);
       }
@@ -412,7 +470,6 @@ export const useAuthStore = defineStore("auth", {
       return result;
     },
     async signOut(url = "/") {
-
       this.router.push(url);
 
       await Session.signOut();
@@ -483,11 +540,11 @@ export const useAuthStore = defineStore("auth", {
     },
     getRealmUsername(realm) {
       const account = this.accounts.get(realm);
-      return account ? account.username : '';
+      return account ? account.username : "";
     },
     getRealmEmail(realm) {
       const account = this.accounts.get(realm);
-      return account ? account.email : '';
+      return account ? account.email : "";
     },
 
     async checkAvailabilityMulti(username, domains) {
@@ -534,8 +591,8 @@ export const useAuthStore = defineStore("auth", {
         return {
           status: "OK",
           available: result.data.available,
-          unavailable: result.data.unavailable,
-        }
+          unavailable: result.data.unavailable
+        };
       } catch (e) {
         if (e.response.status == 401) {
           this.signInRequired = true;
@@ -589,9 +646,9 @@ export const useAuthStore = defineStore("auth", {
         });
         console.log("MULTICLAIMRESULT", claimResult);
         if (claimResult.data.accounts) {
-          claimResult.data.accounts.forEach(account => {
+          claimResult.data.accounts.forEach((account) => {
             this.accounts.set(account.domain, account);
-          })
+          });
           return { status: "OK" };
         } else {
           return { status: "ERROR", message: claimResult.data.message };
@@ -619,7 +676,6 @@ export const useAuthStore = defineStore("auth", {
       return domain.toLowerCase().replace(".", "_");
     },
     async provisionFediverse(domain, password) {
-
       try {
         const result = await api.post("/member/account/fediverse", {
           password: password,
@@ -627,25 +683,24 @@ export const useAuthStore = defineStore("auth", {
         });
 
         console.log("PROVISONING", result);
-        if (result.data.status == 'active') {
-
+        if (result.data.status == "active") {
           let services = this.accountServices.get(domain);
 
-          console.log('SERVICES', services)
+          console.log("SERVICES", services);
 
-          if(services) {
+          if (services) {
             console.log(services);
           } else {
             services = { fediverse: result.data };
-            this.accountServices.set(domain, services)
+            this.accountServices.set(domain, services);
           }
 
           return { status: "OK" };
         } else {
-           return { status: "ERROR", message: claimResult.data.message };
+          return { status: "ERROR", message: claimResult.data.message };
         }
       } catch (e) {
-        console.log('ERROR: ', e)
+        console.log("ERROR: ", e);
         if (e.response.status == 401) {
           this.signInRequired = true;
         }
@@ -656,7 +711,6 @@ export const useAuthStore = defineStore("auth", {
       }
     },
     async fediversePassword(domain, password) {
-
       try {
         const result = await api.post("/member/account/fediverse/password", {
           password: password,
@@ -664,14 +718,13 @@ export const useAuthStore = defineStore("auth", {
         });
 
         console.log("CHANGING PASSWORD", result);
-        if (result.data.status == 'updated') {
-
+        if (result.data.status == "updated") {
           return { status: "OK" };
         } else {
-           return { status: "ERROR", message: claimResult.data.message };
+          return { status: "ERROR", message: claimResult.data.message };
         }
       } catch (e) {
-        console.log('ERROR: ', e)
+        console.log("ERROR: ", e);
         if (e.response.status == 401) {
           this.signInRequired = true;
         }
@@ -681,16 +734,14 @@ export const useAuthStore = defineStore("auth", {
         };
       }
     },
-    accountServiceStatus(domain, service) {
-
-    },
+    accountServiceStatus(domain, service) {},
     accountService(domain, service) {
-      if(this.accountServices.has(domain)) {
+      if (this.accountServices.has(domain)) {
         return this.accountServices.get(domain)[service];
       } else {
         return {
           status: "unprovisioned"
-        }
+        };
       }
     }
   }
