@@ -1,15 +1,15 @@
 [[redirects]]
   from = "/.well-known/webfinger"
-  to = "https://members.izzup.com/.well-known/webfinger"
+  to = "https://it.izzup.com/.well-known/webfinger"
   status = 301
   force = true
 [[redirects]]
   from = "/.well-known/host-meta"
-  to = "https://members.izzup.com/.well-known/host-meta"
+  to = "https://it.izzup.com/.well-known/host-meta"
   status = 301
   force = true
 [[redirects]]
   from = "/.well-known/nodeinfo"
-  to = "https://members.izzup.com/.well-known/nodeinfo"
+  to = "https://it.izzup.com/.well-known/nodeinfo"
   status = 301
   force = true
