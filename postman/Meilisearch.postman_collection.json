@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "f51ac878-f4ce-4317-bef4-12ef01dc5771",
+		"name": "Meilisearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27760",
+		"_collection_link": "https://ultrinet.postman.co/workspace/Ultri-Izzup~ae1d2b1f-30a6-494e-9639-8bc256f90647/collection/27760-f51ac878-f4ce-4317-bef4-12ef01dc5771?action=share&source=collection_link&creator=27760"
+	},
+	"item": [
+		{
+			"name": "keys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{searchHost}}/keys/",
+					"host": [
+						"{{searchHost}}"
+					],
+					"path": [
+						"keys",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
