@@ -2,7 +2,7 @@
   "name": "ultri-app",
   "version": "0.0.1",
   "description": "Passwordless Auth and App framework using SuperTokens, Quasar, Vue 3 and Workspaces",
-  "productName": "Ultri App",
+  "productName": "Ultri Shop",
   "author": "Brian Winkers <bwinkers@gmail.com>",
   "private": true,
   "scripts": {
