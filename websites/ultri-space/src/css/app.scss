@@ -1,0 +1,12 @@
+// app global css in SCSS form
+.body--light {
+   /* ... */
+}
+
+.body--dark {
+   /* ... */
+}
+
+.body--dark a:visited {
+  color: $grey-4 !important;
+}
