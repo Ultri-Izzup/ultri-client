@@ -8,13 +8,20 @@
           $t("site.name")
         }}</span>
       </q-toolbar-title>
-      <q-btn @click="ui.toggleRightDrawer" :color="ui.authenticated ? 'light-green' : ''" dense flat round icon="mdi-account" />
+      <q-btn
+        @click="ui.toggleRightDrawer"
+        :color="ui.authenticated ? 'light-green' : ''"
+        dense
+        flat
+        round
+        icon="mdi-account"
+      />
     </q-toolbar>
   </q-header>
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from "pinia";
 import { useUIStore } from "../../stores/ui";
 
 const ui = useUIStore();

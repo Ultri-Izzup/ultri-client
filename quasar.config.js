@@ -60,7 +60,8 @@ module.exports = configure((/* ctx */) => ({
       WEBSITE_DOMAIN: process.env.SUPERTOKENS_WEBSITE_DOMAIN,
       APPNAME: process.env.SUPERTOKENS_APPNAME,
       SUPERTOKENS_DEBUG: process.env.SUPERTOKENS_DEBUG,
-      REALM: process.env.REALM
+      REALM: process.env.REALM,
+      DEFAULT_LANGUAGE: process.env.DEFAULT_LANGUAGE
     },
 
     vueRouterMode: "history", // available values: 'hash', 'history'
@@ -113,7 +114,7 @@ module.exports = configure((/* ctx */) => ({
     config: {},
 
     iconSet: "mdi-v7", // Quasar icon set
-    // lang: 'en-US', // Quasar language pack
+    // lang: "en-US", // Quasar language pack
 
     // For special cases outside of where the auto-import strategy can have an impact
     // (like functional components as one of the examples),
