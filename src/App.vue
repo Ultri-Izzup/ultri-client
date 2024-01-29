@@ -10,7 +10,7 @@ import Session from "supertokens-web-js/recipe/session";
 import Passwordless from "supertokens-web-js/recipe/passwordless";
 
 SuperTokens.init({
-  enableDebugLogs: true,
+  enableDebugLogs: false, // process.env.SUPERTOKENS_DEBUG,
   appInfo: {
     apiDomain: process.env.API_DOMAIN,
     apiBasePath: "/auth",
