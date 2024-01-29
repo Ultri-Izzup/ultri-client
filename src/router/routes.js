@@ -18,7 +18,7 @@ switch (process.env.REALM) {
     ];
     break;
 
-  default:
+  case "ultri.com":
     siteRoutes = [
       {
         path: "/",
@@ -27,39 +27,40 @@ switch (process.env.REALM) {
           {
             path: "",
             name: "home",
-            component: () => import("pages/IndexPage.vue")
+            component: () => import("pages/UltriComIndexPage.vue")
+          }
+        ]
+      },
+      {
+        path: "/fediverse",
+        component: () => import("layouts/MainLayout.vue"),
+        children: [
+          {
+            path: "",
+            name: "fediverseInfo",
+            component: () => import("pages/FediverseInfoPage.vue")
+          }
+        ]
+      }
+    ];
+    break;
+
+  case "ultri.space":
+    siteRoutes = [
+      {
+        path: "/",
+        component: () => import("layouts/MainLayout.vue"),
+        children: [
+          {
+            path: "",
+            name: "home",
+            component: () => import("pages/UltriSpaceIndexPage.vue")
           }
         ]
       }
     ];
     break;
 }
-
-// if (process.env.REALM === "ultri.shop") {
-//   routes.push({
-//     path: "/",
-//     component: () => import("layouts/MainLayout.vue"),
-//     children: [
-//       {
-//         path: "",
-//         name: "home",
-//         component: () => import("pages/UltriShopIndexPage.vue")
-//       }
-//     ]
-//   });
-// } else {
-//   routes.push({
-//     path: "/",
-//     component: () => import("layouts/MainLayout.vue"),
-//     children: [
-//       {
-//         path: "",
-//         name: "home",
-//         component: () => import("pages/IndexPage.vue")
-//       }
-//     ]
-//   });
-// }
 
 const defaultRoutes = [
   // ABOUT

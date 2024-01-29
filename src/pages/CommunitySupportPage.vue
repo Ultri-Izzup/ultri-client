@@ -5,16 +5,23 @@
         <span class="text-h2">Community Support</span>
       </q-card-section>
       <q-card-section>
-        <div>
-          Support is available from our Community Support Team.
-        </div>
+        <div>Support is available from our Community Support Team.</div>
         <ol>
-          <li>Join <a href="https://ultri.space/signup">Ultri.space</a></li>
-          <li>Post your question in <a href="https://ultri.space/c/community_support">Community Support</a></li>
+          <li>Join <a href="https://ultri.world/signup">Ultri.world</a></li>
+          <li>
+            Post your question in
+            <a href="https://ultri.world/c/support">Community Support</a>
+          </li>
         </ol>
       </q-card-section>
       <q-card-actions class="justify-center">
-        <q-btn href="https://ultri.space/c/community_support" label="Ask Community" color="primary" no-caps v-ripple></q-btn>
+        <q-btn
+          href="https://ultri.world/c/community_support"
+          label="Ask Community"
+          color="primary"
+          no-caps
+          v-ripple
+        ></q-btn>
       </q-card-actions>
     </q-card>
   </q-page>
@@ -26,5 +33,4 @@ import useContent from "../composables/content";
 
 const page = usePage();
 const content = useContent();
-
 </script>

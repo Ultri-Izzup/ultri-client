@@ -14,6 +14,10 @@ export default boot(({ app }) => {
       defaultLocale = "en-US-ultri-space";
       break;
 
+    case "ultri.com":
+      defaultLocale = "en-US-ultri-com";
+      break;
+
     default:
       defaultLocale = "en-US";
       break;
