@@ -68,7 +68,16 @@ export default function useRealms() {
     }
   };
 
+  const options = () => {
+    const opts = [];
+    for (const [key, value] of Object.entries(realmList)) {
+      opts.push(value.displayDomain);
+    }
+    return opts;
+  };
+
   return {
+    options,
     realmList
   };
 }
