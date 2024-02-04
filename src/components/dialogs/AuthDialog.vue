@@ -2,7 +2,9 @@
   <q-dialog ref="dialogRef" persistent>
     <q-card class="q-dialog-plugin">
       <q-card-section class="row full-width q-pa-none q-ma-none">
-        <span  class="text-h4 q-pl-md q-pb-md q-pt-sm text-bold text-grey-5">{{ user.targetPath ? 'Sign In Required' : 'Sign In' }}</span>
+        <span class="text-h4 q-pl-md q-pb-md q-pt-sm text-bold text-grey-5">{{
+          user.targetPath ? "Sign In Required" : "Sign In"
+        }}</span>
         <q-space />
         <q-btn
           flat
@@ -31,14 +33,15 @@
                     label="Send Passcode"
                     color="primary"
                     @click="requestOTP()"
-                  ><q-tooltip>close</q-tooltip></q-btn>
+                    ><q-tooltip>close</q-tooltip></q-btn
+                  >
                 </q-card-actions>
               </q-form>
             </div>
           </q-tab-panel>
 
           <q-tab-panel name="code" class="q-pt-lg q-px-none">
-            <div class="text-h5 text-primary">Enter OTP</div>
+            <div class="text-h5">Enter OTP</div>
             <div class="q-py-xs text-italic">
               Enter the one-time passcode provided in the email.
             </div>
@@ -98,8 +101,8 @@ const submitPasscodeEnabled = computed(() => {
 const requestOTP = async () => {
   emailSubmitted.value = true;
   await user.passwordlessRequest(email.value);
-  tab.value = 'code';
-}
+  tab.value = "code";
+};
 
 const submitOTP = async () => {
   codeSubmitted.value = true;
@@ -109,10 +112,10 @@ const submitOTP = async () => {
     switch (result.status) {
       case "OK":
         onDialogOK();
-        if(user.targetPath) {
-          router.push(user.targetPath)
+        if (user.targetPath) {
+          router.push(user.targetPath);
         } else {
-          router.push('/member/dashboard')
+          router.push("/member/dashboard");
         }
         reset();
         break;
@@ -179,7 +182,6 @@ watch(code, (newValue, oldValue) => {
     validCode.value = false;
   }
 });
-
 </script>
 
 <style scoped lang="scss"></style>

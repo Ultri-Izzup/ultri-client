@@ -41,6 +41,26 @@ switch (process.env.REALM) {
             component: () => import("pages/FediverseInfoPage.vue")
           }
         ]
+      },
+      {
+        path: "/member",
+        component: () => import("layouts/MainLayout.vue"),
+        meta: {
+          requiresAuth: true
+        },
+        children: [
+          {
+            path: "fediverse",
+            name: "memberFediverse",
+            component: () => import("pages/member/MemberFediversePage.vue")
+          },
+          {
+            path: "dashboard",
+            name: "memberDashboard",
+            component: () => import("pages/member/MemberDashboardPage.vue"),
+            meta: { requiresAuth: true }
+          }
+        ]
       }
     ];
     break;
@@ -111,59 +131,6 @@ const defaultRoutes = [
         path: "",
         name: "canavaPublic",
         component: () => import("pages/CanavaPage.vue")
-      }
-    ]
-  },
-
-  // MEMBER DASHBOARD
-  {
-    path: "/member/dashboard",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        name: "memberDashboard",
-        component: () => import("pages/MemberDashboardPage.vue"),
-        meta: { requiresAuth: true }
-      }
-    ]
-  },
-
-  // FEDIVERSE DASHBOARD
-  {
-    path: "/member/fediverse",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        name: "fediverseDashboard",
-        component: () => import("pages/FediverseDashboardPage.vue")
-      }
-    ]
-  },
-
-  // CANAVA DASHBOARD
-  {
-    path: "/member/canava",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        name: "canavaDashboard",
-        component: () => import("pages/CanavaDashboardPage.vue")
-      }
-    ]
-  },
-
-  // WORKSPACES
-  {
-    path: "/workspaces",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
-        path: "",
-        name: "workspaceDashboard",
-        component: () => import("pages/WorkspacesDashboardPage.vue")
       }
     ]
   },

@@ -31,7 +31,7 @@ export const useUserStore = defineStore("user", () => {
   const authDialogVisible = ref(false);
   const createdAt = useStorage("createdAt", null);
   const displayName = useStorage("displayName", null);
-  const email = useStorage("email", null);
+  const authEmail = useStorage("authEmail", null);
   const isNew = ref(false); // Is this their first sign in?
   const targetPath = useStorage("targetPath", null); // Nav path awaiting sign in
 
@@ -50,7 +50,7 @@ export const useUserStore = defineStore("user", () => {
    * GETTERS - *Computed* functions become store getters
    */
   const isSignedIn = computed(() => {
-    return email.value && email.value.length > 0;
+    return authEmail.value && authEmail.value.length > 0;
   });
 
   // Has the user granted internal tracking?
@@ -95,7 +95,7 @@ export const useUserStore = defineStore("user", () => {
     cookiePolicyAccepted.value = null;
     createdAt.value = null;
     displayName.value = null;
-    email.value = null;
+    authEmail.value = null;
     extTrackingAccepted.value = false;
     intTrackingAccepted.value = false;
     isNew.value = false;
@@ -137,13 +137,35 @@ export const useUserStore = defineStore("user", () => {
       });
 
       // Store the user data we care about
-      email.value = response.user.email;
-      // Don't bother storing the UID, its not dsplayed.
+      authEmail.value = response.user.emails[0];
+      // Don't bother storing the UID, its not displayed.
       // The API will always derive it from the auth token.
 
       // Set session value to celebrate and assist new members.
       if (response.createdNewUser || response.createdNewRecipeUser) {
         isNew.value = true;
+      }
+
+      const accountData = await api.get("/member/account");
+      const foundAccounts = accountData.data.accounts;
+
+      let firstIteration = true;
+
+      if (foundAccounts && foundAccounts.length > 0) {
+        for (const account of foundAccounts) {
+          if (firstIteration) {
+            firstIteration = false;
+            displayName.value = account.displayName;
+          }
+          accounts.value[account.domain] = {
+            username: account.accountName,
+            accountId: account.accountId,
+            createdAt: account.accountCreatedAt
+          };
+        }
+        // foundAccounts.forEach((account) => {
+        //   accounts.value[account.domain] = account;
+        // });
       }
 
       return { status: "OK" };
@@ -186,7 +208,7 @@ export const useUserStore = defineStore("user", () => {
     cookieOptionsDisplayed,
     cookiePolicyAccepted,
     displayName,
-    email,
+    authEmail,
     extTrackingAccepted,
     intTrackingAccepted,
     isNew,

@@ -3,7 +3,7 @@ export default {
     signInSignUp: "Sign In / Sign Up",
     signIn: "Sign In",
     signOut: "Sign Out",
-    signUp: "Sign Up",
+    signUp: "Sign Up"
   },
   canava: {
     dashboard: {
@@ -11,18 +11,18 @@ export default {
     }
   },
   communitySupport: {
-    label: 'Support'
+    label: "Support"
   },
   cookie: {
     settings: {
       acceptance: {
-        label: 'Cookie Acceptance',
+        label: " Accept Cookies"
       },
       acceptCookiePolicy: {
-        label: 'Accept policy',
+        label: "Accept policy"
       },
       accessLevel: {
-        label: 'Maximum Access',
+        label: "Maximum Access",
         visitor: {
           label: "Visitor"
         },
@@ -37,15 +37,15 @@ export default {
         label: "Cookie Policy",
         viewLabel: "View Cookie Policy"
       },
-      label: 'Cookie settings',
+      label: "Cookie settings",
       requiredCookies: {
-        label: 'Required Cookies'
+        label: "Required Cookies"
       },
       internalTrackingCookies: {
-        label: 'Internal Tracking'
+        label: "Internal Tracking"
       },
       externalTrackingCookies: {
-        label: 'All Cookies'
+        label: "All Cookies"
       }
     }
   },
@@ -53,7 +53,7 @@ export default {
     close: "Close"
   },
   dashboard: {
-    label: 'Dashboard'
+    label: "Dashboard"
   },
   fediverse: {
     dashboard: {
@@ -67,12 +67,13 @@ export default {
     },
     policy: {
       label: "Legal"
-    },
+    }
   },
   policy: {
     dialog: {
       header: "Policies and Terms",
-      coverage: "These apply to all Ultri / Izzup websites, web services, applications and mobile apps."
+      coverage:
+        "These apply to all Ultri / Izzup websites, web services, applications and mobile apps."
     },
     cookie: {
       label: "Cookie Policy"
@@ -94,11 +95,11 @@ export default {
         long: "Brian Winkers dba Ultri"
       }
     },
-    name: "Ultri",
+    name: "Ultri"
   },
   workspace: {
     dashboard: {
       label: "Workspaces"
     }
-  },
-}
+  }
+};

@@ -8,6 +8,11 @@
           $t("site.name")
         }}</span>
       </q-toolbar-title>
+
+      <q-space></q-space>
+
+      <HeaderLinks></HeaderLinks>
+
       <q-btn
         @click="ui.toggleRightDrawer"
         :color="ui.authenticated ? 'light-green' : ''"
@@ -23,6 +28,8 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useUIStore } from "../../stores/ui";
+
+import HeaderLinks from "./header/HeaderLinks.vue";
 
 const ui = useUIStore();
 const { rightDrawerOpen } = storeToRefs(ui);

@@ -1,7 +1,6 @@
 <template>
   <div>
     <q-list bordered separator>
-
       <!-- MEMBER DASHBOARD -->
       <member-dashboard></member-dashboard>
 
@@ -23,7 +22,6 @@
       <!-- SIGN IN / SIGN OUT -->
       <sign-out v-if="user.isSignedIn"></sign-out>
       <sign-in v-else></sign-in>
-
     </q-list>
   </div>
 </template>

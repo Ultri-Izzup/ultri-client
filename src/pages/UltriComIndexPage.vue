@@ -11,7 +11,7 @@
     <q-btn
       size="xl"
       rounded
-      label="Enter the Fediverse"
+      label="Fediverse Access"
       class="q-pa-lg text-weight-bolder"
       color="primary"
       to="/fediverse"
@@ -22,8 +22,6 @@
       {{ $t("homepage.headline3_1") }}
       <br />
       {{ $t("homepage.headline3_2") }}
-      <br />
-      {{ $t("homepage.headline3_3") }}
       <br />
       {{ $t("homepage.headline3_4") }}
     </div>
