@@ -50,7 +50,7 @@ if (process.env.PROD) {
 }
 
 SuperTokens.init({
-  // enableDebugLogs: true,
+  enableDebugLogs: true,
   appInfo: {
     apiDomain: apiHost,
     apiBasePath: "/auth",

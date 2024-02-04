@@ -310,15 +310,15 @@ export const useAuthStore = defineStore("auth", {
           email
         });
         console.log("RESPONSE", response);
-      } catch (err) {
-        console.log("ERROR", err);
+      } catch (e) {
+        console.log("ERROR", e);
         if (e.response.status == 401) {
           this.signInRequired = true;
         }
-        if (err.isSuperTokensGeneralError === true) {
+        if (e.isSuperTokensGeneralError === true) {
           // this may be a custom error message sent from the API by you,
           // or if the input email / phone number is not valid.
-          window.alert(err.message);
+          window.alert(e.message);
         } else {
           window.alert("Oops! Something went wrong.");
         }
