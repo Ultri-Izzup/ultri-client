@@ -1,30 +1,30 @@
 <template>
-  <q-card flat>
+  <q-card flat class="row full-width">
     <q-card-section>
-      <div>
-        <p class="text-h5">Headless Fediverse</p>
-        <p class="text-h6">Keep your interests separate</p>
-        <ul>
+      <div class="row">
+        <p class="text-h5 full-width">Headless Fediverse </p>
+        <div class="text-body1 q-pt-md full-width">
+          <p class="row justify-center">
+            Use the client of your choice to access the Fediverse thoriugh these domains.
+          </p>
+          <div class="row justify-center">
+            <ul>
           <li>Works with any Mastodon client.</li>
           <li>Limit of one username per domain.</li>
           <li>Use the same, or different, username in each domain.</li>
         </ul>
       </div>
+      </div>
+      </div>
     </q-card-section>
-    <q-card-actions class="justify-center">
-      <q-icon name="img:/gotosocial/logo.svg" size="sm"></q-icon>
+    <q-card-actions class="justify-center full-width">
       <q-space></q-space>
-      <q-icon name="img:/gotosocial/logo.svg" size="lg"></q-icon>
+      <q-btn icon-right="img:/gotosocial/logo.svg" label="Join Now" to="/member/fediverse" color="primary" size="xl" rounded></q-btn>
       <q-space></q-space>
-      <q-btn label="Join Now" to="/member/fediverse" color="primary" size="xl" rounded></q-btn>
-      <q-space></q-space>
-      <q-icon name="img:/gotosocial/logo.svg" size="lg"></q-icon>
-      <q-space></q-space>
-      <q-icon name="img:/gotosocial/logo.svg" size="sm"></q-icon>
     </q-card-actions>
-    <q-card-section>
-        <p class="text-h6">Fediverse Publishing Domains</p>
-        <p class="text-body1">
+    <q-card-section class="justify-center full-width">
+        <p class="text-h6 full-width text-center">Fediverse Publishing Domains</p>
+        <p class="row justify-center text-body1 full-width">
           <ul>
             <li v-for="(item, key) in realms.realmList" :key="key">
               {{ item.displayDomain }}

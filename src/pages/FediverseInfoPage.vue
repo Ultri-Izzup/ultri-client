@@ -1,6 +1,8 @@
 <template>
   <q-page :class="page.topCenter()">
-    <div class="full-width text-center text-h2 q-pb-md">Fediverse</div>
+    <div class="full-width text-center text-h2 q-pb-md text-weight-medium">
+      Fediverse
+    </div>
     <div class="row full-width justify-center">
       <q-card
         flat
@@ -31,13 +33,11 @@
         </q-tab-panel> -->
 
           <q-tab-panel name="premium" class="q-px-none">
-            <PremiumFediverse :class="content.adjustedPy()"></PremiumFediverse>
+            <PremiumFediverse></PremiumFediverse>
           </q-tab-panel>
 
           <q-tab-panel name="headless" class="q-px-none">
-            <HeadlessFediverse
-              :class="content.adjustedPy()"
-            ></HeadlessFediverse>
+            <HeadlessFediverse></HeadlessFediverse>
           </q-tab-panel>
         </q-tab-panels>
       </q-card>

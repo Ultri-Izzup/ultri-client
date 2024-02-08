@@ -41,17 +41,20 @@
     <q-card-section class="text-left">
       <p class="text-h3">Beliefs</p>
       <q-list bordered class="rounded-borders">
-        <q-expansion-item expand-separator label="Small is beautiful">
+        <q-expansion-item expand-separator label="Small is beautiful.">
           <q-card>
             <q-card-section> </q-card-section>
           </q-card>
         </q-expansion-item>
-        <q-expansion-item expand-separator label="Large is inherently evil">
+        <q-expansion-item expand-separator label="Large is inherently evil.">
           <q-card>
             <q-card-section> </q-card-section>
           </q-card>
         </q-expansion-item>
-        <q-expansion-item expand-separator label="People should own their data">
+        <q-expansion-item
+          expand-separator
+          label="People should own their data."
+        >
           <q-card>
             <q-card-section> </q-card-section>
           </q-card>

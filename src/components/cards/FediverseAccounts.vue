@@ -7,7 +7,7 @@
         </q-avatar>
         <span class="q-pt-sm q-pl-sm">GoToSocial</span>
       </div>
-      <div class="text-center justify-center row">
+      <div class="text-center justify-center row full-width">
         <span class="q-pt-md q-pr-xs text-h6"> @ </span>
         <span class="col-4"
           ><q-input v-model="username" label="username"></q-input
@@ -21,7 +21,7 @@
           ></q-select>
         </span>
         <span class="q-pt-md q-pl-md"
-          ><q-btn label="Create" color="primary" class="col-3"></q-btn
+          ><q-btn label="Claim Username" color="primary" class="col-3"></q-btn
         ></span>
       </div>
     </q-card-section>
@@ -40,7 +40,11 @@
         <span class="col"></span>
         <!-- <q-btn label="Connect"></q-btn>
         <span class="col-1"></span> -->
-        <q-btn label="Create" color="primary"></q-btn>
+        <q-btn
+          label="Visit Site"
+          color="primary"
+          href="https://ultri.net"
+        ></q-btn>
         <span class="col"></span>
       </div>
     </q-card-section>
@@ -59,7 +63,11 @@
         <span class="col"></span>
         <!-- <q-btn label="Connect"></q-btn>
         <span class="col-1"></span> -->
-        <q-btn label="Create" color="primary"></q-btn>
+        <q-btn
+          label="Visit Site"
+          color="primary"
+          href="https://ultri.world"
+        ></q-btn>
         <span class="col"></span>
       </div>
     </q-card-section>
@@ -78,7 +86,11 @@
         <span class="col"></span>
         <!--  <q-btn label="Connect"></q-btn>
         <span class="col-1"></span> -->
-        <q-btn label="Create" color="primary"></q-btn>
+        <q-btn
+          label="Visit Site"
+          color="primary"
+          href="https://izzup.com"
+        ></q-btn>
         <span class="col"></span>
       </div>
     </q-card-section>
