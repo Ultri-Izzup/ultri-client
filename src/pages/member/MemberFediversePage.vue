@@ -7,7 +7,7 @@
         class="q-pa-none full-width"
         :style="content.minMaxReadableWidth()"
       >
-        <!-- <q-tabs
+        <q-tabs
           v-model="tab"
           dense
           class="text-grey"
@@ -16,13 +16,24 @@
           align="justify"
           narrow-indicator
         >
-          <q-tab name="accounts" label="Accounts"></q-tab>
-          <q-tab name="create" label="Create +"></q-tab>
-        </q-tabs> -->
+          <!-- <q-tab name="overview" label="Overview"></q-tab> -->
+          <q-tab name="community" label="Community"></q-tab>
+          <q-tab name="publishing" label="Publishing"></q-tab>
+        </q-tabs>
 
         <q-separator></q-separator>
 
-        <FediverseAccounts :class="content.adjustedPy()"></FediverseAccounts>
+        <q-tab-panels v-model="tab" animated>
+          <q-tab-panel name="community" class="q-px-none">
+            <FediverseCommunityAccounts></FediverseCommunityAccounts>
+          </q-tab-panel>
+
+          <q-tab-panel name="publishing" class="q-px-none">
+            <FediversePublishingAccounts></FediversePublishingAccounts>
+          </q-tab-panel>
+        </q-tab-panels>
+
+        <!-- <FediverseAccounts :class="content.adjustedPy()"></FediverseAccounts> -->
       </q-card>
     </div>
   </q-page>
@@ -34,8 +45,9 @@ import { useMeta } from "quasar";
 import usePage from "../../composables/page";
 import useContent from "../../composables/content";
 
-import CreateFediverse from "../../components/cards/CreateFediverse.vue";
 import FediverseAccounts from "../../components/cards/FediverseAccounts.vue";
+import FediversePublishingAccounts from "../../components/cards/FediversePublishingAccounts.vue";
+import FediverseCommunityAccounts from "../../components/cards/FediverseCommunityAccounts.vue";
 
 const page = usePage();
 const content = useContent();
@@ -80,5 +92,5 @@ const metaData = {
 
 useMeta(metaData);
 
-const tab = ref("accounts");
+const tab = ref("publishing");
 </script>

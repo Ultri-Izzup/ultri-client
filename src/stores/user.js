@@ -27,7 +27,8 @@ export const useUserStore = defineStore("user", () => {
   const cookieOptionsDisplayed = useStorage("cookieOptionsDisplayed", false);
 
   // Auth state props
-  const accounts = useStorage("accounts", {});
+  const credentialAccounts = useStorage("credentialAccounts", {});
+  const fediverseAccounts = useStorage("fediverseAccounts", {});
   const authDialogVisible = ref(false);
   const createdAt = useStorage("createdAt", null);
   const displayName = useStorage("displayName", null);
@@ -89,7 +90,8 @@ export const useUserStore = defineStore("user", () => {
    * ACTIONS - Plain functions become store actions
    */
   const $reset = () => {
-    accounts.value = {};
+    credentialAccounts.value = {};
+    fediverseAccounts.value = {};
     authDialogVisible.value = false;
     cookieOptionsDisplayed.value = false;
     cookiePolicyAccepted.value = null;
@@ -138,7 +140,7 @@ export const useUserStore = defineStore("user", () => {
 
       // Store the user data we care about
       authEmail.value = response.user.emails[0];
-      // Don't bother storing the UID, its not displayed.
+      // Don't bother storing the UID, its not used in the client.
       // The API will always derive it from the auth token.
 
       // Set session value to celebrate and assist new members.
@@ -146,26 +148,15 @@ export const useUserStore = defineStore("user", () => {
         isNew.value = true;
       }
 
-      const accountData = await api.get("/member/account");
-      const foundAccounts = accountData.data.accounts;
-
-      let firstIteration = true;
+      const credentialAccountData = await api.get("/credential");
+      const foundAccounts = credentialAccountData.data.accounts;
 
       if (foundAccounts && foundAccounts.length > 0) {
         for (const account of foundAccounts) {
-          if (firstIteration) {
-            firstIteration = false;
-            displayName.value = account.displayName;
-          }
-          accounts.value[account.domain] = {
-            username: account.accountName,
-            accountId: account.accountId,
-            createdAt: account.accountCreatedAt
+          credentialAccounts.value[account.realm] = {
+            displayName: account.displayName
           };
         }
-        // foundAccounts.forEach((account) => {
-        //   accounts.value[account.domain] = account;
-        // });
       }
 
       return { status: "OK" };
@@ -198,12 +189,26 @@ export const useUserStore = defineStore("user", () => {
     return /^[0-9]{6}$/.test(otp);
   };
 
+  const validateUsername = (username) => {
+    return /^[a-z0-9_]{3,20}$/.test(username);
+  };
+
+  const fediverseAvailability = async (username, domains) => {
+    const availability = await api.post("/fediverse/username/available", {
+      username: username,
+      domains: domains
+    });
+
+    return availability.data;
+  };
+
   /**
    * RETURN ONLY WHAT IS NEEDED EXTERNALLY
    */
   return {
     // STATE
-    accounts,
+    credentialAccounts,
+    fediverseAccounts,
     authDialogVisible,
     cookieOptionsDisplayed,
     cookiePolicyAccepted,
@@ -227,12 +232,14 @@ export const useUserStore = defineStore("user", () => {
 
     // ACTIONS
     $reset,
+    fediverseAvailability,
     passwordlessRequest,
     passwordlessSubmitCode,
     setTargetPath,
     signOut,
     toggleAuthDialog,
     validateEmail,
-    validatePasscode
+    validatePasscode,
+    validateUsername
   };
 });

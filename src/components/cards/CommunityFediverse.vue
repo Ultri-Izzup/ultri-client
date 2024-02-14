@@ -2,7 +2,7 @@
   <q-card flat class="row full-width">
     <q-card-section>
       <div class="row">
-        <div class="text-h5 full-width">Premium Fediverse</div>
+        <div class="text-h5 full-width">Community Fediverse</div>
         <div class="text-body1 q-pt-md full-width">
           <p class="row justify-center">
             We offer the leading Fediverse services for micro-blogging and

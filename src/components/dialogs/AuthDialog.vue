@@ -26,7 +26,10 @@
             <div>
               <q-form>
                 <q-input v-model="email" label="Email" type="email"></q-input>
-                <q-card-actions class="row justify-center q-pt-lg">
+                <div class="text-center text-caption text-grey-6">
+                  {{ submitEnabled ? "&nbsp;" : "enter a valid email address" }}
+                </div>
+                <q-card-actions class="row justify-center">
                   <q-btn
                     icon="mdi-email-fast-outline"
                     :disable="!submitEnabled"
@@ -48,7 +51,10 @@
             <div>
               <q-form>
                 <q-input v-model="code" label="OTP"></q-input>
-                <q-card-actions class="row justify-center q-pt-lg">
+                <div class="text-center text-caption text-grey-6">
+                  {{ submitPasscodeEnabled ? "&nbsp;" : "enter a valid OTP" }}
+                </div>
+                <q-card-actions class="row justify-center">
                   <!-- <q-btn label="Cancel" color="secondary"  @click="reset()" v-close-popup></q-btn> -->
                   <q-btn
                     label="Sign In"

@@ -19,25 +19,19 @@
           narrow-indicator
         >
           <!-- <q-tab name="overview" label="Overview"></q-tab> -->
-          <q-tab name="premium" label="Premium"></q-tab>
+          <q-tab name="community" label="Community"></q-tab>
           <q-tab name="headless" label="Headless"></q-tab>
         </q-tabs>
 
         <q-separator></q-separator>
 
         <q-tab-panels v-model="tab" animated>
-          <!-- <q-tab-panel name="overview">
-          <FediverseOverview
-            :class="content.adjustedPa()"
-          ></FediverseOverview>
-        </q-tab-panel> -->
-
-          <q-tab-panel name="premium" class="q-px-none">
-            <PremiumFediverse></PremiumFediverse>
+          <q-tab-panel name="community" class="q-px-none">
+            <CommunityFediverse></CommunityFediverse>
           </q-tab-panel>
 
           <q-tab-panel name="headless" class="q-px-none">
-            <HeadlessFediverse></HeadlessFediverse>
+            <PublishingFediverse></PublishingFediverse>
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -52,8 +46,8 @@ import usePage from "../composables/page";
 import useContent from "../composables/content";
 
 // import FediverseOverview from "../components/panels/FediverseOverview.vue";
-import HeadlessFediverse from "../components/cards/HeadlessFediverse.vue";
-import PremiumFediverse from "../components/cards/PremiumFediverse.vue";
+import PublishingFediverse from "../components/cards/PublishingFediverse.vue";
+import CommunityFediverse from "../components/cards/CommunityFediverse.vue";
 
 const page = usePage();
 const content = useContent();
@@ -98,5 +92,5 @@ const metaData = {
 
 useMeta(metaData);
 
-const tab = ref("premium");
+const tab = ref("community");
 </script>

@@ -2,10 +2,10 @@
   <q-card flat class="row full-width">
     <q-card-section>
       <div class="row">
-        <p class="text-h5 full-width">Headless Fediverse </p>
+        <p class="text-h5 full-width">Publishing Fediverse </p>
         <div class="text-body1 q-pt-md full-width">
           <p class="row justify-center">
-            Use the client of your choice to access the Fediverse thoriugh these domains.
+            Access these Fediverse domains using a third-party client.
           </p>
           <div class="row justify-center">
             <ul>

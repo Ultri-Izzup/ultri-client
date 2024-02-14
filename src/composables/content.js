@@ -106,11 +106,22 @@ export default function useContent() {
       : $q.screen.width * 0.95;
   };
 
+  const columns = () => {
+    return $q.screen.gt.lg
+      ? "col-3"
+      : $q.screen.gt.md
+      ? "col-4"
+      : $q.screen.gt.sm
+      ? "col-6"
+      : "col-12";
+  };
+
   return {
     adjustedPa,
     adjustedPx,
     adjustedPy,
     adjustedMy,
+    columns,
     maxWidth,
     maxReadableWidth,
     minWidth,
