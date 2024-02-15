@@ -28,42 +28,93 @@
           &nbsp;{{ usernameMsg }}
         </div>
       </div>
-      <div class="q-pt-xl" :disable="!usernameValid">
-        <div class="q-px-xs text-h6" :disable="!usernameValid">
-          Select one or more domains
-        </div>
+      <div v-if="usernameValid" class="q-pt-md">
+        <div class="q-px-xs text-h6">Select one or more domains</div>
         <div class="row fit text-body1 q-pt-sm">
           <div
             v-for="(item, key) in realms.realmList"
             :key="key"
-            :class="content.columns() + ' q-pa-sm'"
+            :class="content.columns() + ' q-pa-sm '"
           >
             <q-checkbox
               v-model="checkDoms"
               :val="key"
               :label="item.displayDomain"
-              :disable="!usernameValid"
+              :disable="!usernameValid || claimedDoms.includes(key)"
+              :class="
+                claimedDoms.includes(key) ? ' text-strike text-grey-5' : ' '
+              "
             ></q-checkbox>
+            <div class="text-caption text-center q-pt-none">
+              <span v-if="availableDoms.includes(key)" class="text-positive"
+                >Available</span
+              >
+              <span
+                v-else-if="claimedDoms.includes(key)"
+                class="text-negative text-bold"
+                >Claimed</span
+              >
+              <span v-else-if="exhaustedDoms.includes(key)" class="text-grey-5"
+                >Existing domain account</span
+              >
+              <span v-else>&nbsp;</span>
+            </div>
           </div>
         </div>
       </div>
     </q-card-section>
-    <q-card-actions class="text-center justify-center">
+    <q-card-actions v-if="usernameValid" class="text-center justify-center">
       <q-btn
         label="Check Availability"
         color="primary"
         @click="checkAvailability"
         size="lg"
-        :disable="!usernameValid"
+        :disable="!usernameValid || validToClaim"
+        class="q-ma-sm"
       ></q-btn>
+      <!-- <q-btn
+        label="Claim Username"
+        color="primary"
+        @click="claimUsername"
+        size="lg"
+        :disable="!validToClaim"
+        class="q-ma-sm"
+      ></q-btn> -->
+    </q-card-actions>
+    <q-card-actions v-if="usernameValid" class="text-center justify-center">
+      <!--
+      <q-btn
+        label="Check Availability"
+        color="primary"
+        @click="checkAvailability"
+        size="lg"
+        :disable="!usernameValid || validToClaim"
+        class="q-ma-sm"
+      ></q-btn>
+      -->
       <q-btn
         label="Claim Username"
         color="primary"
         @click="claimUsername"
         size="lg"
         :disable="!validToClaim"
+        class="q-ma-sm"
       ></q-btn>
     </q-card-actions>
+    <q-card-section>
+      <div class="row full-width">
+        <div class="text-h6 full-width text-center">
+          Claim your username now!
+        </div>
+        <div
+          v-for="dom in availableDoms"
+          :key="dom"
+          class="full-width text-center"
+        >
+          @{{ username }}@{{ dom }}
+        </div>
+      </div>
+    </q-card-section>
   </q-card>
 </template>
 
@@ -119,6 +170,9 @@ const checkAvailability = async () => {
   availableDoms.value = checkResult.domains.available;
   claimedDoms.value = checkResult.domains.usernameClaimed;
   exhaustedDoms.value = checkResult.domains.realmExhausted;
+
+  // Uncheck invalid domains
+  checkDoms.value = [...availableDoms.value];
 };
 
 const claimUsername = async () => {
@@ -138,8 +192,6 @@ watch(username, (newVal, oldVal) => {
   claimedDoms.value = [];
   exhaustedDoms.value = [];
   usernameValid.value = user.validateUsername(newVal);
-  console.log("NEW", newVal);
-  console.log("OLD", oldVal);
   if (!/^[a-z0-9_]*$/.test(newVal)) {
     usernameMsgColor.value = " text-negative ";
     usernameMsg.value = "lowercase letters, digits and underscore allowed";
@@ -150,7 +202,7 @@ watch(username, (newVal, oldVal) => {
     usernameMsgColor.value = " text-negative ";
     usernameMsg.value = "maximum 20 characters";
   } else {
-    usernameMsg.value = "valid username";
+    usernameMsg.value = "valid";
     usernameMsgColor.value = " text-positive ";
   }
 });

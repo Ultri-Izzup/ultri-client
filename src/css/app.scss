@@ -1,12 +1,23 @@
 // app global css in SCSS form
 .body--light {
-   /* ... */
+  /* ... */
 }
 
 .body--dark {
-   /* ... */
+  /* ... */
 }
 
-.body--dark a:visited {
+// .body--light a:visited {
+//   color: $grey-4 !important;
+// }
+
+.body--dark .q-tab__label {
+  color: white !important;
+}
+
+.u-nav-bar a {
+  text-decoration: none;
+}
+.u-nav-bar a:visited {
   color: $grey-4 !important;
 }
