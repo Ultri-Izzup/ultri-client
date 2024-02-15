@@ -202,6 +202,19 @@ export const useUserStore = defineStore("user", () => {
     return availability.data;
   };
 
+  const getFediverseAccounts = async () => {
+    const accountData = await api.get("/fediverse");
+
+    console.log(accountData.data);
+
+    for (const acct of accountData.data.accounts) {
+      fediverseAccounts.value[acct.domain] = {
+        username: acct.username,
+        status: acct.status
+      };
+    }
+  };
+
   /**
    * RETURN ONLY WHAT IS NEEDED EXTERNALLY
    */
@@ -233,6 +246,7 @@ export const useUserStore = defineStore("user", () => {
     // ACTIONS
     $reset,
     fediverseAvailability,
+    getFediverseAccounts,
     passwordlessRequest,
     passwordlessSubmitCode,
     setTargetPath,

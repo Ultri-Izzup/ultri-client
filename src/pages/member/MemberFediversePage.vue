@@ -40,14 +40,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useMeta } from "quasar";
+
+import { useUserStore } from "../../stores/user";
+
 import usePage from "../../composables/page";
 import useContent from "../../composables/content";
 
-import FediverseAccounts from "../../components/cards/FediverseAccounts.vue";
 import FediversePublishingAccounts from "../../components/cards/FediversePublishingAccounts.vue";
 import FediverseCommunityAccounts from "../../components/cards/FediverseCommunityAccounts.vue";
+
+const user = useUserStore();
 
 const page = usePage();
 const content = useContent();
@@ -93,4 +97,8 @@ const metaData = {
 useMeta(metaData);
 
 const tab = ref("publishing");
+
+onMounted(() => {
+  user.getFediverseAccounts();
+});
 </script>

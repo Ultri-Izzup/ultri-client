@@ -40,7 +40,12 @@
               v-model="checkDoms"
               :val="key"
               :label="item.displayDomain"
-              :disable="!usernameValid || claimedDoms.includes(key)"
+              :disable="
+                !usernameValid ||
+                claimedDoms.includes(key) ||
+                exhaustedDoms.includes(key) ||
+                typeof user.fediverseAccounts[key] === 'object'
+              "
               :class="
                 claimedDoms.includes(key) ? ' text-strike text-grey-5' : ' '
               "
@@ -53,6 +58,9 @@
                 v-else-if="claimedDoms.includes(key)"
                 class="text-negative text-bold"
                 >Claimed</span
+              >
+              <span v-else-if="user.fediverseAccounts[key]" class="text-grey-5"
+                >@{{ user.fediverseAccounts[key].username }}@{{ key }}</span
               >
               <span v-else-if="exhaustedDoms.includes(key)" class="text-grey-5"
                 >Existing domain account</span
