@@ -20,7 +20,7 @@
         >
           <!-- <q-tab name="overview" label="Overview"></q-tab> -->
           <q-tab name="community" label="Community"></q-tab>
-          <q-tab name="headless" label="Headless"></q-tab>
+          <q-tab name="publishing" label="Publishing"></q-tab>
         </q-tabs>
 
         <q-separator></q-separator>
@@ -30,7 +30,7 @@
             <CommunityFediverse></CommunityFediverse>
           </q-tab-panel>
 
-          <q-tab-panel name="headless" class="q-px-none">
+          <q-tab-panel name="publishing" class="q-px-none">
             <PublishingFediverse></PublishingFediverse>
           </q-tab-panel>
         </q-tab-panels>

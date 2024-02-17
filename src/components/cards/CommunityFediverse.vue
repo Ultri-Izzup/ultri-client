@@ -18,14 +18,20 @@
 
           <q-card :class="content.adjustedMy()">
             <q-card-section class="row text-center bg-primary text-white">
+              <q-avatar
+                square
+                :class="$q.screen.gt.sm ? 'q-mr-md' : 'q-mr-sm'"
+                :size="$q.screen.gt.sm ? 'lg' : 'md'"
+              >
+                <img src="mastodon/logo.svg" />
+              </q-avatar>
+              <div :class="$q.screen.gt.sm ? 'text-h4' : 'text-h5'">
+                Mastodon
+              </div>
+              <q-space></q-space>
               <div :class="$q.screen.gt.sm ? 'text-h4' : 'text-h5'">
                 Ultri.net
               </div>
-              <q-space></q-space>
-              <div class="text-h6 q-pr-md">Mastodon</div>
-              <q-avatar square>
-                <img src="mastodon/logo.svg" />
-              </q-avatar>
             </q-card-section>
             <q-card-section class="row justify-center">
               <div class="text-body1 full-width justify-center text-center">
@@ -54,14 +60,18 @@
 
           <q-card :class="content.adjustedMy()">
             <q-card-section class="row text-center bg-primary text-white">
+              <q-avatar
+                square
+                :class="$q.screen.gt.sm ? 'q-mr-md' : 'q-mr-sm'"
+                :size="$q.screen.gt.sm ? 'lg' : 'md'"
+              >
+                <img src="lemmy/logo.svg" />
+              </q-avatar>
+              <div :class="$q.screen.gt.sm ? 'text-h4' : 'text-h5'">Lemmy</div>
+              <q-space></q-space>
               <div :class="$q.screen.gt.sm ? 'text-h4' : 'text-h5'">
                 Ultri.world
               </div>
-              <q-space></q-space>
-              <div class="text-h6 q-pr-md">Lemmy</div>
-              <q-avatar square>
-                <img src="lemmy/logo.svg" />
-              </q-avatar>
             </q-card-section>
             <q-card-section>
               <div class="text-body1 full-width justify-center text-center">
@@ -90,14 +100,20 @@
 
           <q-card :class="content.adjustedMy()">
             <q-card-section class="row text-center bg-primary text-white">
+              <q-avatar
+                square
+                :class="$q.screen.gt.sm ? 'q-mr-md' : 'q-mr-sm'"
+                :size="$q.screen.gt.sm ? 'lg' : 'md'"
+              >
+                <img src="firefish/logo.svg" />
+              </q-avatar>
+              <div :class="$q.screen.gt.sm ? 'text-h4' : 'text-h5'">
+                Firefish
+              </div>
+              <q-space></q-space>
               <div :class="$q.screen.gt.sm ? 'text-h4' : 'text-h5'">
                 Izzup.com
               </div>
-              <q-space></q-space>
-              <div class="text-h6 q-pr-md">Firefish</div>
-              <q-avatar square>
-                <img src="firefish/logo.svg" />
-              </q-avatar>
             </q-card-section>
             <q-card-section>
               <div class="text-body1 full-width justify-center text-center">

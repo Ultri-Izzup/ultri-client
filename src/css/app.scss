@@ -15,6 +15,13 @@
   color: white !important;
 }
 
+.body--light .page-text {
+  color: $grey-9;
+}
+.body--dark .page-text {
+  color: $grey-3;
+}
+
 .u-nav-bar a {
   text-decoration: none;
 }

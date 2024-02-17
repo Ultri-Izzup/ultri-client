@@ -38,8 +38,6 @@
       </div>
       <div class="text-center justify-center row">
         <span class="col"></span>
-        <!-- <q-btn label="Connect"></q-btn>
-        <span class="col-1"></span> -->
         <q-btn
           label="Visit Site"
           color="primary"

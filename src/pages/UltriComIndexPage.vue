@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center page-text">
     <div class="gt-sm row full-width justify-center text-h2 text-bold">
       {{ $t("homepage.headline2") }}
     </div>

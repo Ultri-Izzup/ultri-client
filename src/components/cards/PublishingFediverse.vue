@@ -9,7 +9,7 @@
           </p>
           <div class="row justify-center">
             <ul>
-          <li>Works with any Mastodon client.</li>
+          <li>Works with many Mastodon clients.</li>
           <li>Limit of one username per domain.</li>
           <li>Use the same, or different, username in each domain.</li>
         </ul>
