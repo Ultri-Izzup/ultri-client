@@ -32,7 +32,7 @@
         <div class="q-px-xs text-h6">Select one or more domains</div>
         <div class="row fit text-body1 q-pt-sm">
           <div
-            v-for="(item, key) in realms.realmList"
+            v-for="(item, key) in user.unclaimedDomains"
             :key="key"
             :class="content.columns() + ' q-pa-sm '"
           >
@@ -123,6 +123,84 @@
         </div>
       </div>
     </q-card-section>
+
+    <template v-if="!usernameValid">
+      <q-separator></q-separator>
+      <q-card-section>
+        <div class="text-h6 row">
+          <q-avatar square>
+            <img src="/mastodon/logo.svg" />
+          </q-avatar>
+          <span class="q-pt-sm q-pl-sm">Mastodon</span>
+          <q-space></q-space>
+          <span class="q-pt-sm text-weight-bolder text-primary text-italic"
+            >Ultri.net</span
+          >
+        </div>
+        <div class="text-center justify-center row">
+          <span class="col"></span>
+          <!-- <q-btn label="Connect"></q-btn>
+        <span class="col-1"></span> -->
+          <q-btn
+            rounded
+            label="Join"
+            color="primary"
+            href="https://ultri.net/auth/sign_up"
+          ></q-btn>
+          <span class="col"></span>
+        </div>
+      </q-card-section>
+      <q-separator></q-separator>
+      <q-card-section>
+        <div class="text-h6 row">
+          <q-avatar square>
+            <img src="/lemmy/logo.svg" />
+          </q-avatar>
+          <span class="q-pt-sm q-pl-sm">Lemmy</span>
+          <q-space></q-space>
+          <span class="q-pt-sm text-weight-bolder text-primary text-italic"
+            >Ultri.world</span
+          >
+        </div>
+        <div class="text-center justify-center row">
+          <span class="col"></span>
+          <!-- <q-btn label="Connect"></q-btn>
+        <span class="col-1"></span> -->
+          <q-btn
+            rounded
+            label="Join"
+            color="primary"
+            href="https://ultri.world/signup"
+          ></q-btn>
+          <span class="col"></span>
+        </div>
+      </q-card-section>
+      <q-separator></q-separator>
+      <q-card-section>
+        <div class="text-h6 row">
+          <q-avatar square>
+            <img src="/firefish/logo.svg" />
+          </q-avatar>
+          <span class="q-pt-sm q-pl-sm">Firefish</span>
+          <q-space></q-space>
+          <span class="q-pt-sm text-weight-bolder text-primary text-italic"
+            >Izzup.com</span
+          >
+        </div>
+        <div class="text-center justify-center row">
+          <span class="col"></span>
+          <!--  <q-btn label="Connect"></q-btn>
+        <span class="col-1"></span> -->
+          <q-btn
+            rounded
+            label="Join"
+            color="primary"
+            href="https://izzup.com"
+          ></q-btn>
+          <span class="col"></span>
+        </div>
+      </q-card-section>
+    </template>
   </q-card>
 </template>
 
@@ -184,15 +262,15 @@ const checkAvailability = async () => {
 };
 
 const claimUsername = async () => {
-  const checkResult = await user.fediverseAvailability(
-    username.value,
-    checkDoms.value
-  );
-  console.log("CHECK AVAILABILITY RESULT", checkResult);
+  const claimResult = await user.claimUsername(username.value, checkDoms.value);
+  console.log("CLAIM USERNAME RESULT", claimResult);
 
-  availableDoms.value = checkResult.domains.available;
-  claimedDoms.value = checkResult.domains.usernameClaimed;
-  exhaustedDoms.value = checkResult.domains.realmExhausted;
+  if (claimResult.domains.successfulClaims.length > 0) {
+    checkDoms.value = [];
+    availableDoms.value = [];
+    claimedDoms.value = [];
+    exhaustedDoms.value = [];
+  }
 };
 
 watch(username, (newVal, oldVal) => {

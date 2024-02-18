@@ -16,9 +16,10 @@
         <!-- <q-btn label="Connect"></q-btn>
         <span class="col-1"></span> -->
         <q-btn
-          label="Visit Site"
+          rounded
+          label="Sign In"
           color="primary"
-          href="https://ultri.net"
+          href="https://ultri.net/auth/sign_in"
         ></q-btn>
         <span class="col"></span>
       </div>
@@ -39,9 +40,10 @@
         <!-- <q-btn label="Connect"></q-btn>
         <span class="col-1"></span> -->
         <q-btn
-          label="Visit Site"
+          rounded
+          label="Sign In"
           color="primary"
-          href="https://ultri.world"
+          href="https://ultri.world/login"
         ></q-btn>
         <span class="col"></span>
       </div>
@@ -62,7 +64,8 @@
         <!--  <q-btn label="Connect"></q-btn>
         <span class="col-1"></span> -->
         <q-btn
-          label="Visit Site"
+          rounded
+          label="Sign In"
           color="primary"
           href="https://izzup.com"
         ></q-btn>

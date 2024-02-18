@@ -12,6 +12,9 @@ import {
 
 import { api } from "boot/axios";
 
+import useRealms from "../composables/realms";
+const realms = useRealms();
+
 /**
  * The User store manages user functionality and state,
  * from being an anonymous visitor, to being an authenticated member.
@@ -27,8 +30,8 @@ export const useUserStore = defineStore("user", () => {
   const cookieOptionsDisplayed = useStorage("cookieOptionsDisplayed", false);
 
   // Auth state props
-  const credentialAccounts = useStorage("credentialAccounts", {});
-  const fediverseAccounts = useStorage("fediverseAccounts", {});
+  const credentialAccounts = useStorage("credentialAccounts", new Map());
+  const fediverseAccounts = useStorage("fediverseAccounts", new Map());
   const authDialogVisible = ref(false);
   const createdAt = useStorage("createdAt", null);
   const displayName = useStorage("displayName", null);
@@ -86,12 +89,18 @@ export const useUserStore = defineStore("user", () => {
     );
   });
 
+  const unclaimedDomains = computed(() => {
+    const unclaimed = {};
+
+    return unclaimed;
+  });
+
   /**
    * ACTIONS - Plain functions become store actions
    */
   const $reset = () => {
-    credentialAccounts.value = {};
-    fediverseAccounts.value = {};
+    credentialAccounts.value = new Map();
+    fediverseAccounts.value = new Map();
     authDialogVisible.value = false;
     cookieOptionsDisplayed.value = false;
     cookiePolicyAccepted.value = null;
@@ -149,13 +158,14 @@ export const useUserStore = defineStore("user", () => {
       }
 
       const credentialAccountData = await api.get("/credential");
+      console.log(credentialAccountData);
       const foundAccounts = credentialAccountData.data.accounts;
 
       if (foundAccounts && foundAccounts.length > 0) {
         for (const account of foundAccounts) {
-          credentialAccounts.value[account.realm] = {
+          credentialAccounts.value.set(account.realm, {
             displayName: account.displayName
-          };
+          });
         }
       }
 
@@ -202,6 +212,24 @@ export const useUserStore = defineStore("user", () => {
     return availability.data;
   };
 
+  const claimUsername = async (username, domains) => {
+    const claim = await api.post("/fediverse/username/claim", {
+      username: username,
+      domains: domains
+    });
+
+    for (const dom in claim.data.domains) {
+      fediverseAccounts.set(dom, {
+        username: username,
+        status: "reserved"
+      });
+    }
+
+    console.log(claim);
+
+    return claim.data;
+  };
+
   const getFediverseAccounts = async () => {
     const accountData = await api.get("/fediverse");
 
@@ -240,11 +268,13 @@ export const useUserStore = defineStore("user", () => {
     isNetizen,
     isSignedIn,
     netizenCookiesMet,
+    unclaimedDomains,
     signinCookiesMet,
     signinRequirementsMet,
 
     // ACTIONS
     $reset,
+    claimUsername,
     fediverseAvailability,
     getFediverseAccounts,
     passwordlessRequest,

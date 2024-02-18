@@ -24,13 +24,13 @@ export default function useRealms() {
       contentHost: "member.OpenSociocracy.org",
       description: "all things Sociocracy related"
     },
-    "maxpets.org": {
+    "maxpets.com": {
       displayName: "Max Pets",
       displayDomain: "MaxPets.com",
       contentHost: "my.MaxPets.com",
       description: "never too many pet posts"
     },
-    "maxrecipes.org": {
+    "maxrecipes.com": {
       displayName: "Max Recipes",
       displayDomain: "MaxRecipes.com",
       contentHost: "my.MaxRecipes.com",

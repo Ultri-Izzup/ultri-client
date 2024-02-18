@@ -17,19 +17,19 @@
           narrow-indicator
         >
           <!-- <q-tab name="overview" label="Overview"></q-tab> -->
-          <q-tab name="community" label="Community"></q-tab>
-          <q-tab name="publishing" label="Publishing"></q-tab>
+          <q-tab name="manage" label="Manage"></q-tab>
+          <q-tab name="create" label="Create"></q-tab>
         </q-tabs>
 
         <q-separator></q-separator>
 
         <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="community" class="q-px-none">
-            <FediverseCommunityAccounts></FediverseCommunityAccounts>
+          <q-tab-panel name="manage" class="q-px-none">
+            <FediverseManageAccounts></FediverseManageAccounts>
           </q-tab-panel>
 
-          <q-tab-panel name="publishing" class="q-px-none">
-            <FediversePublishingAccounts></FediversePublishingAccounts>
+          <q-tab-panel name="create" class="q-px-none">
+            <FediverseCreateAccounts></FediverseCreateAccounts>
           </q-tab-panel>
         </q-tab-panels>
 
@@ -48,8 +48,8 @@ import { useUserStore } from "../../stores/user";
 import usePage from "../../composables/page";
 import useContent from "../../composables/content";
 
-import FediversePublishingAccounts from "../../components/cards/FediversePublishingAccounts.vue";
-import FediverseCommunityAccounts from "../../components/cards/FediverseCommunityAccounts.vue";
+import FediverseCreateAccounts from "../../components/cards/FediverseCreateAccounts.vue";
+import FediverseManageAccounts from "../../components/cards/FediverseManageAccounts.vue";
 
 const user = useUserStore();
 
@@ -96,7 +96,7 @@ const metaData = {
 
 useMeta(metaData);
 
-const tab = ref("publishing");
+const tab = ref("create");
 
 onMounted(() => {
   user.getFediverseAccounts();

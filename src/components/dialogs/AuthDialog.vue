@@ -121,7 +121,7 @@ const submitOTP = async () => {
         if (user.targetPath) {
           router.push(user.targetPath);
         } else {
-          router.push("/member/dashboard");
+          router.push("/member/fediverse");
         }
         reset();
         break;
