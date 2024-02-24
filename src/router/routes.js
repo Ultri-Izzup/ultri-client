@@ -57,8 +57,7 @@ switch (process.env.REALM) {
           {
             path: "dashboard",
             name: "memberDashboard",
-            component: () => import("pages/member/MemberDashboardPage.vue"),
-            meta: { requiresAuth: true }
+            component: () => import("pages/member/MemberDashboardPage.vue")
           }
         ]
       }

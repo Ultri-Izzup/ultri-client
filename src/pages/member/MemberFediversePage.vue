@@ -25,11 +25,15 @@
 
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="manage" class="q-px-none">
-            <FediverseManageAccounts></FediverseManageAccounts>
+            <FediverseManageAccounts
+              @use-tab="switchTab"
+            ></FediverseManageAccounts>
           </q-tab-panel>
 
           <q-tab-panel name="create" class="q-px-none">
-            <FediverseCreateAccounts></FediverseCreateAccounts>
+            <FediverseCreateAccounts
+              @use-tab="switchTab"
+            ></FediverseCreateAccounts>
           </q-tab-panel>
         </q-tab-panels>
 
@@ -41,6 +45,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+// import { storeToRefs } from "pinia";
 import { useMeta } from "quasar";
 
 import { useUserStore } from "../../stores/user";
@@ -52,6 +57,7 @@ import FediverseCreateAccounts from "../../components/cards/FediverseCreateAccou
 import FediverseManageAccounts from "../../components/cards/FediverseManageAccounts.vue";
 
 const user = useUserStore();
+// const { fediverseAccounts } = storeToRefs(user);
 
 const page = usePage();
 const content = useContent();
@@ -98,7 +104,14 @@ useMeta(metaData);
 
 const tab = ref("create");
 
+const switchTab = (newTab) => {
+  tab.value = newTab;
+};
+
 onMounted(() => {
   user.getFediverseAccounts();
+  if (user.unclaimedDomains.size < 1) {
+    tab.value = "manage";
+  }
 });
 </script>

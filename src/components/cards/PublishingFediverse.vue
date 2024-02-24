@@ -26,7 +26,7 @@
         <p class="text-h6 full-width text-center">Fediverse Publishing Domains</p>
         <p class="row justify-center text-body1 full-width">
           <ul>
-            <li v-for="(item, key) in realms.realmMap" :key="key">
+            <li v-for="[key, item] in realms.realmMap" :key="key">
               {{ item.displayDomain }}
             </li>
           </ul>

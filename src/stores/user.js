@@ -13,7 +13,7 @@ import {
 import { api } from "boot/axios";
 
 import useRealms from "../composables/realms";
-const realms = useRealms();
+const { realmMap } = useRealms();
 
 /**
  * The User store manages user functionality and state,
@@ -53,8 +53,9 @@ export const useUserStore = defineStore("user", () => {
   /**
    * GETTERS - *Computed* functions become store getters
    */
-  const isSignedIn = computed(() => {
-    return authEmail.value && authEmail.value.length > 0;
+  const isSignedIn = computed(async () => {
+    // return authEmail.value && authEmail.value.length > 0;
+    return await Session.doesSessionExist();
   });
 
   // Has the user granted internal tracking?
@@ -90,7 +91,13 @@ export const useUserStore = defineStore("user", () => {
   });
 
   const unclaimedDomains = computed(() => {
-    const unclaimed = {};
+    const unclaimed = new Map();
+
+    for (const [key, value] of realmMap) {
+      if (!fediverseAccounts.value.has(key)) {
+        unclaimed.set(key, value);
+      }
+    }
 
     return unclaimed;
   });
@@ -218,14 +225,12 @@ export const useUserStore = defineStore("user", () => {
       domains: domains
     });
 
-    for (const dom in claim.data.domains) {
-      fediverseAccounts.set(dom, {
+    for (const dom of claim.data.domains.successfulClaims) {
+      fediverseAccounts.value.set(dom, {
         username: username,
         status: "reserved"
       });
     }
-
-    console.log(claim);
 
     return claim.data;
   };
@@ -233,13 +238,13 @@ export const useUserStore = defineStore("user", () => {
   const getFediverseAccounts = async () => {
     const accountData = await api.get("/fediverse");
 
-    console.log(accountData.data);
+    console.log(accountData);
 
     for (const acct of accountData.data.accounts) {
-      fediverseAccounts.value[acct.domain] = {
+      fediverseAccounts.value.set(acct.domain, {
         username: acct.username,
         status: acct.status
-      };
+      });
     }
   };
 
