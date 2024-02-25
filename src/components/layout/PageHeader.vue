@@ -15,7 +15,7 @@
 
       <q-btn
         @click="ui.toggleRightDrawer"
-        :color="ui.authenticated ? 'light-green' : ''"
+        :color="user.isSignedIn ? 'light-green' : ''"
         dense
         flat
         round
@@ -28,9 +28,12 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useUIStore } from "../../stores/ui";
+import { useUserStore } from "../../stores/user";
 
 import HeaderLinks from "./header/HeaderLinks.vue";
 
 const ui = useUIStore();
 const { rightDrawerOpen } = storeToRefs(ui);
+
+const user = useUserStore();
 </script>

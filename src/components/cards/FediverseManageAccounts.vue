@@ -28,7 +28,7 @@
                   is reserved.
                 </div>
                 <div v-if="val.status === 'reserved'" class="text-h6">
-                  Enter password to activate
+                  Enter a password to activate the account
                 </div>
                 <div>
                   <q-input
@@ -45,23 +45,20 @@
                       ></q-icon>
                     </template>
                   </q-input>
-                  Scorea: {{ passwd.score(password, [val.username]) }}
-                  <!-- <password-meter :password="password" @score="onScore" />
-                  Score: {{ score }} -->
-                  <div class="row full-width">
-                    <div class="col bg-grey-3">&nbsp;</div>
-                    <div class="col bg-grey-3">&nbsp;2</div>
-                    <div class="col bg-grey-3">&nbsp;3</div>
-                    <div class="col bg-grey-3">&nbsp;4</div>
-                    <div class="col bg-grey-3">&nbsp;5</div>
-                  </div>
                 </div>
+                <password-meter
+                  v-model="password"
+                  @score="onScore"
+                  :showScore="false"
+                  :secureScore="secureStore"
+                  :userStrings="[val.username, key.split('.')[0]]"
+                ></password-meter>
               </q-card-section>
               <q-card-actions class="justify-center">
                 <q-btn
                   label="Activate"
                   color="primary"
-                  :disable="score < 4"
+                  :disable="score < secureStore"
                 ></q-btn>
               </q-card-actions>
             </q-card>
@@ -170,10 +167,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { storeToRefs } from "pinia";
 
-import PasswordMeter from "vue-simple-password-meter";
+import PasswordMeter from "../PasswordMeter.vue";
 
 import useRealms from "../../composables/realms.js";
 import usePassword from "../../composables/password.js";
@@ -183,6 +180,7 @@ import { useUserStore } from "../../stores/user";
 const domain = ref();
 const username = ref();
 const score = ref(null);
+const secureStore = 70;
 
 const user = useUserStore();
 const { fediverseAccounts } = storeToRefs(user);
@@ -191,7 +189,6 @@ const emit = defineEmits(["useTab"]);
 
 const isPwd = ref(true);
 const password = ref(null);
-const pwdStrength = ref(0);
 
 const reset = () => {
   domain.value = null;

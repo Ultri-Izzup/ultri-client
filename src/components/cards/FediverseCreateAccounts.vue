@@ -131,7 +131,7 @@
           <div class="text-h6 full-width text-center">
             Claim your username now!
           </div>
-          {{ claimableDoms }}
+          <!-- {{ claimableDoms }} -->
           <div
             v-for="dom in availableDoms"
             :key="dom"

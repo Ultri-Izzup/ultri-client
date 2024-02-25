@@ -25,6 +25,7 @@ export const useUIStore = defineStore("ui", () => {
 
   // GETTERS - Computed functions become store getters
   const authenticated = computed(() => {
+    console.log("UI", user.isSignedIn);
     return user.isSignedIn ? true : false;
   });
 
@@ -94,15 +95,12 @@ export const useUIStore = defineStore("ui", () => {
   );
 
   // Celebrate new member signin
-  watch(
-    isNew,
-    (newVal, oldVal) => {
-      if (newVal) {
-        console.log('welcome new user');
-        explodeConfetti();
-      }
+  watch(isNew, (newVal, oldVal) => {
+    if (newVal) {
+      console.log("welcome new user");
+      explodeConfetti();
     }
-  );
+  });
 
   /**
    * RETURN ONLY WHAT IS NEEDED EXTERNALLY

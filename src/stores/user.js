@@ -53,9 +53,8 @@ export const useUserStore = defineStore("user", () => {
   /**
    * GETTERS - *Computed* functions become store getters
    */
-  const isSignedIn = computed(async () => {
-    // return authEmail.value && authEmail.value.length > 0;
-    return await Session.doesSessionExist();
+  const isSignedIn = computed(() => {
+    return authEmail.value && authEmail.value.length > 0;
   });
 
   // Has the user granted internal tracking?

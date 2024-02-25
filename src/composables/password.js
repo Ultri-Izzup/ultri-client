@@ -28,7 +28,7 @@ const stdCharsets = [
   },
   {
     name: "special",
-    re: /["#%'()+//:;<=>?[\]^{|}~]/, // "#%'()+/:;<=>?[\]^{|}~
+    re: /["#%'()+//:;<=>?[\]^{|}~] /, // "#%'()+/:;<=>?[\]^{|}~
     length: 22
   }
 ];
@@ -79,7 +79,7 @@ const removeCommon = (passwd, userStrings = []) => {
 
     console.log("REMOVING STR", str);
 
-    re = new RegExp(str, "g");
+    re = new RegExp(str, "gi");
 
     strOut = strOut.replace(re, "");
 
@@ -94,7 +94,7 @@ const removeCommon = (passwd, userStrings = []) => {
   for (const str of userStrings) {
     console.log("REMOVING USER STR", str);
 
-    re = new RegExp(str, "g");
+    re = new RegExp(str, "gi");
 
     strOut = strOut.replace(re, "");
 
@@ -125,7 +125,11 @@ export default function usePassword() {
       str = cleaned.remaining;
       console.log("AFTER REMOVAL OF COMMON", str);
 
-      str = str.replace(/(.)(?=.*\1)/g, "");
+      str = str.replace(/(.)\1+/g, "$1");
+
+      str = str.replace(/\s/g, "");
+
+      console.log("AFTER DEDUPE", str);
     }
 
     console.log("FINAL", str);
